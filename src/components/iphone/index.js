@@ -8,6 +8,8 @@ import $ from 'jquery';
 // import the Button component
 import Button from '../button';
 
+import WeatherBox from '../weatherbox';
+
 import weatherData from '../../data/London.json';
 
 export default class Iphone extends Component {
@@ -19,7 +21,7 @@ export default class Iphone extends Component {
 		// temperature state
 		this.state.temp = "";
 		// button display state
-		this.setState({ display: true });
+		//this.setState({ display: true });
 	}
 
 	// a call to fetch weather data via wunderground
@@ -57,6 +59,7 @@ export default class Iphone extends Component {
 				<div class= { style_iphone.container }> 
 					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }
 				</div>
+				<WeatherBox/ >
 			</div>
 		);
 	}
