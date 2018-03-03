@@ -74,7 +74,7 @@ export default class Iphone extends Component {
 				<div>
 					<div class = {style.futureDay}>{ this.state.fc1 }Mon</div>
 					<div class = {style.futureDay}>{ this.state.fc2 }Tue</div>
-					<div class = {style.futureDay}>{ this.state.fc3 }Wed</div>
+					<div class = {style.futureDayLast}>{ this.state.fc3 }Wed</div>
 				</div>
 				<div class ={ style.today }>
 					TODAY
