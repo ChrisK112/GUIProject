@@ -20,9 +20,9 @@ export default class Iphone extends Component {
 	constructor(props){
 		super(props);
 		// temperature state
-		this.state.temp = "";
+		this.state.temp = "WEFWQ";
 		// button display state
-		//this.setState({ display: true });
+		this.setState({ display: true });
 	}
 
 	// a call to fetch weather data via wunderground
@@ -48,7 +48,7 @@ export default class Iphone extends Component {
 	
 	fetchForecastData = () => {
 		
-		this.parseResponse(wDataForecast);
+		this.parseResponseF(wDataForecast);
 		
 		
 	}
@@ -64,15 +64,13 @@ export default class Iphone extends Component {
 		return (
 			<div class={ style.container }>
 				<div class={ style.girl_container }></div>
-				<div class={ style.header }>
+				<div class= { style_iphone.container }> </div>
+				<WeatherBox>
 					<div class={ style.forecast }>{ this.state.fc }</div>
 					<div class={ style.city }>{ this.state.locate }</div>
 					<div class={ style.conditions }>{ this.state.cond }</div>
 					<span class={ tempStyles }>{ this.state.temp }</span>
-				</div>
-				<div class={ style.details }></div>
-				/<div class= { style_iphone.container }> </div>
-				<WeatherBox/ >
+				</WeatherBox>
 			</div>
 		);
 	}
@@ -87,8 +85,7 @@ export default class Iphone extends Component {
 		this.setState({
 			locate: location,
 			temp: temp_c,
-			cond : conditions,
-			filled : location
+			cond : conditions
 		});      
 	}
 	
