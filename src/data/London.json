@@ -48,7 +48,7 @@
 		"local_tz_short":"GMT",
 		"local_tz_long":"Europe/London",
 		"local_tz_offset":"+0000",
-		"weather":"Mostly Cloudy (saved JSON data)",
+		"weather":"Mostly Cloudy",
 		"temperature_string":"39.2 F (4.0 C)",
 		"temp_f":5.0,
 		"temp_c":-15.0,
