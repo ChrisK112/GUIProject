@@ -8,7 +8,7 @@ export default class WeatherBox extends Component {
     // rendering a function when the button is clicked
     render() {
         return (
-            <div class={ style.test }>
+            <div class={ style.weatherBox }>
                 <div>
                     <div>Mon</div>
                     <div>Tue</div>
