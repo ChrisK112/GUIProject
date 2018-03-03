@@ -68,6 +68,7 @@ export default class Iphone extends Component {
 			<div class={ style.container }>
 				<div class={ style.girl_container }></div>
 				<div class= { style_iphone.container }> </div>
+				<div class= { style.blur } ></div>
 				<div class={ style.weatherBox }>
 					<div>
                     	<div class = {style.futureDay}>{ this.state.fc1 }Mon</div>
@@ -77,7 +78,7 @@ export default class Iphone extends Component {
 	                <div class={ style.today }>
     	                TODAY
 						<div class = { style.condition }>{ this.state.cond }</div>
-						<div class = { style.temperature }>{ this.state.temp }&#176; C</div>
+						<div class = { style.temperature }>{ this.state.temp }&#176;C</div>
 						
                 	
                 	</div>

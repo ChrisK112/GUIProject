@@ -13,6 +13,7 @@
 	margin: 0 auto;
 	position: relative;
 	background-size: 100% 100%;
+	
 }
 .header {
 	display: flex;
@@ -35,20 +36,31 @@
   padding: 20%;
 	flex: 2;
 	margin-top: 0;
-	font-size: 4em;
+	font-size: 2.5em;
 	letter-spacing: 5px;
 }
 .futureDay {
     font-family: munro;
     width: 33.33%;
     float: left;
-    background: orange;
+    background: transparent;
     padding: 2em;
     height: 5em;
 }
 
+.blur {
+    background-image: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
+    background-size: 100% 100%;
+    width: inherit;
+    height: inherit;
+    clip-path: inset(10% 5% 10% 20%);
+    position: absolute;
+    filter: blur(5px);
+}
+
+
 .weatherBox {
-    background: skyblue;
+    background: transparent;
     bottom: 10%;
     position: absolute;
     right: 5%;
