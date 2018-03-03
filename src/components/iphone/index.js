@@ -8,9 +8,10 @@ import $ from 'jquery';
 // import the Button component
 import Button from '../button';
 
-import WeatherBox from '../weatherbox';
 
 import weatherData from '../../data/London.json';
+import wDataForecast from '../../data/LondonForecast.json'
+
 
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
@@ -20,13 +21,21 @@ export default class Iphone extends Component {
 		super(props);
 		// temperature state
 		this.state.temp = "";
+		this.state.fc1 = "10"; 
+		this.state.fc2 = "20";
+		this.state.fc3 = "30";
+		this.fetchWeatherData();
+		this.fetchForecastData();
 		// button display state
-		//this.setState({ display: true });
+		this.setState({ display: true });
 	}
 
 	// a call to fetch weather data via wunderground
 	fetchWeatherData = () => {
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
+		//for forecast, it would be
+		//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
+		
 		/*
 		var url = "http://api.wunderground.com/api/3aec23f2e15b08b5/conditions/q/UK/London.json";
 		$.ajax({
@@ -37,8 +46,16 @@ export default class Iphone extends Component {
 		})
 		*/
 		this.parseResponse(weatherData);
-		// once the data grabbed, hide the button
-		this.setState({ display: false });
+		
+	}
+	//for forecast, it would be
+	//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
+	
+	fetchForecastData = () => {
+		
+		//this.parseResponseF(wDataForecast);
+		
+		
 	}
 
 	// the main render method for the iphone component
@@ -50,22 +67,26 @@ export default class Iphone extends Component {
 		return (
 			<div class={ style.container }>
 				<div class={ style.girl_container }></div>
-				<div class={ style.header }>
-					<div class={ style.city }>{ this.state.locate }</div>
-					<div class={ style.conditions }>{ this.state.cond }</div>
-					<span class={ tempStyles }>{ this.state.temp }</span>
+				<div class= { style_iphone.container }> </div>
+				<div class={ style.weatherBox }>
+					<div>
+                    	<div class = {style.futureDay}>{ this.state.fc1 }Mon</div>
+                    	<div class = {style.futureDay}>{ this.state.fc2 }Tue</div>
+                  	  	<div class = {style.futureDay}>{ this.state.fc3 }Wed</div>
+					</div> 
+	                <div class={ style.today }>
+    	                TODAY
+						<div class = { style.condition }>{ this.state.cond }</div>
+						<div class = { style.temperature }>{ this.state.temp }&#176; C</div>
+						
+                	
+                	</div>
 				</div>
-				<div class={ style.details }></div>
-				<div class= { style_iphone.container }> 
-					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }
-				</div>
-				<WeatherBox/ >
 			</div>
 		);
 	}
 
 	parseResponse = (parsed_json) => {
-		var location = parsed_json['current_observation']['display_location']['city'];
 		var temp_c = parsed_json['current_observation']['temp_c'];
 		var conditions = parsed_json['current_observation']['weather'];
 
@@ -75,5 +96,14 @@ export default class Iphone extends Component {
 			temp: temp_c,
 			cond : conditions
 		});      
+	}
+	
+	parseResponseF = (parsed_json) => {
+		var ftemp_c = parsed_json['forecast']['simple_forecast']['forecastday']['high']['celsius'];
+		
+		this.setState({
+			fc : ftemp_c
+		}) ;
+		
 	}
 }

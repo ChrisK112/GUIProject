@@ -1,9 +1,10 @@
 @import '~style/helpers';
+@font-face { font-family: munro; src: url('../../assets/fonts/munro/Munro.ttf'); } 
 
 .container { 
 	display: flex;
 	flex-direction: column;
-//	background-image: url('../../assets/backgrounds/clear-iphone.jpg');
+	background-image: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
 	background-color: #555;
 	color: #fff;
 	width: 414px;
@@ -11,6 +12,7 @@
 	text-align: center;
 	margin: 0 auto;
 	position: relative;
+	background-size: 100% 100%;
 }
 .header {
 	display: flex;
@@ -25,19 +27,44 @@
 	font-size: 1.7em;
 	font-weight: 400;	
 }
-.conditions {
+.condition {
+  padding: 30%;
 	flex: 1;
-	font-size: 1em;
 }
 .temperature {
+  padding: 20%;
 	flex: 2;
 	margin-top: 0;
-	font-size: 4.8em;
-	font-weight: 300;
-	letter-spacing: -12px;
+	font-size: 4em;
+	letter-spacing: 5px;
 }
+.futureDay {
+    font-family: munro;
+    width: 33.33%;
+    float: left;
+    background: orange;
+    padding: 2em;
+    height: 5em;
+}
+
+.weatherBox {
+    background: skyblue;
+    bottom: 10%;
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    left: 20%;
+}
+
+.today {
+    font-family: munro;
+    padding-top: 25%;
+    height: 100%;
+    font-size: 2em
+}
+
 .filled:after {
-	content: "°";
+	content: "mf3kmf3ifm3iWS°";
 	margin: 0 0 0 1rem;
 	font-size: 0.5em;
 	font-weight: 100;
