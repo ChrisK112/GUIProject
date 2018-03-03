@@ -1,96 +1,103 @@
-@import '~style/helpers';
-@font-face { font-family: munro; src: url('../../assets/fonts/munro/Munro.ttf'); } 
+@import '../../style/helpers.less';
+@font-face { font-family: munro; src: url('../../assets/fonts/munro/Munro.ttf'); }
 
-.container { 
-	display: flex;
-	flex-direction: column;
-	background-image: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
-	background-color: #555;
-	color: #fff;
-	width: 414px;
-	height: 736px;
-	text-align: center;
-	margin: 0 auto;
-	position: relative;
-	background-size: 100% 100%;
-	
+.container {
+  display: flex;
+  flex-direction: column;
+  background-image: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
+  background-color: #555;
+  color: #fff;
+  width: 414px;
+  height: 736px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  background-size: 100% 100%;
+
 }
 .header {
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .details {
-	flex: 4;
+  flex: 4;
 }
 .city {
-	flex: 1;
-	font-size: 1.7em;
-	font-weight: 400;	
+  flex: 1;
+  font-size: 1.7em;
+  font-weight: 400;
 }
 .condition {
-  padding: 30%;
-	flex: 1;
+  min-width: 50%;
+  min-height: 50%;
+  padding-top: 30%;
+  padding-bottom: 10%;
+  padding: 20%;
+  flex: 1;
 }
 .temperature {
   padding: 20%;
-	flex: 2;
-	margin-top: 0;
-	font-size: 2.5em;
-	letter-spacing: 5px;
+  flex: 2;
+  margin-top: 0;
+  font-size: 2.5em;
+  letter-spacing: 5px;
 }
 .futureDay {
-    font-family: munro;
-    width: 33.33%;
-    float: left;
-    background: transparent;
-    padding: 2em;
-    height: 5em;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  font-family: munro;
+  width: 33.33%;
+  float: left;
+  background: transparent;
+  padding: 2em;
+  height: 5em;
 }
 
 .blur {
-    background-image: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
-    background-size: 100% 100%;
-    width: inherit;
-    height: inherit;
-    clip-path: inset(10% 5% 10% 20%);
-    position: absolute;
-    filter: blur(5px);
+  background: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
+  background-size: 100% 100%;
+  width: inherit;
+  height: inherit;
+  clip-path: inset(10% 5% 10% 20%);
+  position: absolute;
+  filter: blur(5px);
 }
 
 
 .weatherBox {
-    background: transparent;
-    bottom: 10%;
-    position: absolute;
-    right: 5%;
-    top: 10%;
-    left: 20%;
+  border-style: solid;
+  background: transparent;
+  bottom: 10%;
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  left: 20%;
 }
 
 .today {
-    font-family: munro;
-    padding-top: 25%;
-    height: 100%;
-    font-size: 2em
+  font-family: munro;
+  padding-top: 25%;
+  height: 100%;
+  font-size: 2em
 }
 
 .filled:after {
-	content: "mf3kmf3ifm3iWS°";
-	margin: 0 0 0 1rem;
-	font-size: 0.5em;
-	font-weight: 100;
-	display: inline-block;
-	padding-top: 10px;
-	vertical-align: top;
+  content: "mf3kmf3ifm3iWS°";
+  margin: 0 0 0 1rem;
+  font-size: 0.5em;
+  font-weight: 100;
+  display: inline-block;
+  padding-top: 10px;
+  vertical-align: top;
 }
 .girl_container {
-	background: url('../../assets/girl/girl.png') no-repeat;
-	width: 229px;
-	height: 518px;
-	bottom:0;
-	left: 0;
-	background-size: contain;
-	position: absolute;
-	z-index: 1000;
+  background: url('../../assets/girl/girl.png') no-repeat;
+  width: 229px;
+  height: 518px;
+  bottom:0;
+  left: 0;
+  background-size: contain;
+  position: absolute;
+  z-index: 1000;
 }
