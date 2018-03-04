@@ -166,3 +166,4 @@ export default class Iphone extends Component {
 		//weather icons from https://www.iconfinder.com/icons/1530392/sun_sunny_temperature_weather_icon#size=256
 
 
+}
