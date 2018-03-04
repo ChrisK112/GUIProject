@@ -10,6 +10,7 @@ import Button from '../button';
 
 
 import weatherData from '../../data/London.json';
+
 import wDataForecast from '../../data/LondonForecast.json';
 
 
@@ -23,6 +24,7 @@ export default class Iphone extends Component {
 		this.state.temp = "";
 		this.fetchWeatherData();
 		this.fetchForecastData();
+
 		// button display state
 		this.setState({ display: true });
 	}
@@ -46,6 +48,7 @@ export default class Iphone extends Component {
 		*/
 		this.parseResponse(weatherData);
 
+
 	}
 	//for forecast, it would be
 	//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
@@ -58,6 +61,8 @@ export default class Iphone extends Component {
 
 	// the main render method for the iphone component
 	render() {
+		this.fetchWeatherData;
+		this.fetchForecastData;
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
 		// display all weather data
@@ -77,6 +82,7 @@ export default class Iphone extends Component {
 					<div class = { style.condition }> <img src = "../../assets/icons/cloudy128.png"> </img> </div>
 					<div class = { style.temperature }>{ this.state.temp }&#176;C</div>
 				</div>
+
 			</div>
 		</div>
 		);
@@ -85,6 +91,7 @@ export default class Iphone extends Component {
 	parseResponse = (parsed_json) => {
 		var temp_c = parsed_json['current_observation']['temp_c'];
 		var conditions = parsed_json['current_observation']['weather'];
+		
 
 
 
@@ -113,3 +120,6 @@ export default class Iphone extends Component {
 		//weather icons from https://www.iconfinder.com/icons/1530392/sun_sunny_temperature_weather_icon#size=256
 
 }
+
+}
+
