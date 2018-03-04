@@ -14,6 +14,9 @@ import weatherData from '../../data/London.json';
 import wDataForecast from '../../data/LondonForecast.json';
 
 
+import WeatherBox from "../weatherbox";
+
+
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
 
@@ -56,70 +59,112 @@ export default class Iphone extends Component {
 	fetchForecastData = () => {
 		this.parseResponseF(wDataForecast);
 
-
 	}
+
+
 
 	// the main render method for the iphone component
 	render() {
 		this.fetchWeatherData;
 		this.fetchForecastData;
+		//let fd1 = {
+		//	day : "Mon",
+		//	image : "../../assets/icons/sunny32.png",
+		//	temp : this.state.f1
+		//};
+
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
 		// display all weather data
 		return (
+
 			<div class={ style.container }>
 			<div class={ style.girl_container }></div>
 			<div class= { style_iphone.container }> </div>
 			<div class= { style.blur } ></div>
-			<div class={ style.weatherBox }>
-				<div>
-					<div class = {style.futureDay}>Mon <img src = "../../assets/icons/sunny32.png"> </img> { this.state.fc1 }</div>
-					<div class = {style.futureDay}>Tue <img src = "../../assets/icons/sunCloud32.png"> </img> { this.state.fc2 }</div>
-					<div class = {style.futureDayLast}>Wed <img src = "../../assets/icons/cloudy32.png"> </img> { this.state.fc3 }</div>
-				</div>
-				<div class ={ style.today }>
-					TODAY
-					<div class = { style.condition }> <img src = "../../assets/icons/cloudy128.png"> </img> </div>
-					<div class = { style.temperature }>{ this.state.temp }&#176;C</div>
-				</div>
 
-			</div>
+			<WeatherBox temp={this.state.temp} cond={this.state.cond} f1={this.state.fd1} f2={this.state.fd2} f3={this.state.fd3}/>
+
+
 		</div>
 		);
 	}
 
 	parseResponse = (parsed_json) => {
-		var temp_c = parsed_json['current_observation']['temp_c'];
-		var conditions = parsed_json['current_observation']['weather'];
-		
 
+		let temp_c = parsed_json['current_observation']['temp_c'];
+		let conditions = parsed_json['current_observation']['weather'];
+		let condImg = this.determineImage(conditions, "128");
 
 
 		// set states for fields so they could be rendered later on
 		this.setState({
 			temp: temp_c,
-			cond : conditions
+			cond : condImg
 		});
 
 	}
 
 	parseResponseF = (parsed_json) => {
-		var ftemp_c1 = parsed_json.forecast.simpleforecast.forecastday[1].high.celsius;
-		var ftemp_c2 = parsed_json.forecast.simpleforecast.forecastday[2].high.celsius;
-		var ftemp_c3 = parsed_json.forecast.simpleforecast.forecastday[3].high.celsius;
+
+		//temperatures
+		let ft1 = parsed_json.forecast.simpleforecast.forecastday[1].high.celsius;
+		let ft2 = parsed_json.forecast.simpleforecast.forecastday[2].high.celsius;
+		let ft3 = parsed_json.forecast.simpleforecast.forecastday[3].high.celsius;
+
+		//conditions
+		let fc1 = parsed_json.forecast.simpleforecast.forecastday[1].conditions;
+		let fc2 = parsed_json.forecast.simpleforecast.forecastday[2].conditions;
+		let fc3 = parsed_json.forecast.simpleforecast.forecastday[3].conditions;
+
+		//conditions img
+
+		let fimg1 = this.determineImage(fc1, "32");
+		let fimg2 = this.determineImage(fc2, "32");
+		let fimg3 = this.determineImage(fc3, "32");
+
+		//days
+		let fday1 = parsed_json.forecast.simpleforecast.forecastday[1].date.weekday_short;
+		let fday2 = parsed_json.forecast.simpleforecast.forecastday[2].date.weekday_short;
+		let fday3 = parsed_json.forecast.simpleforecast.forecastday[3].date.weekday_short;
+
 
 		this.setState({
-			fc1 : ftemp_c1,
-			fc2 : ftemp_c2,
-			fc3 : ftemp_c3
+			fd1 : { fday1, ft1, fimg1 },
+			fd2 : { fday2, ft2, fimg2 },
+			fd3 : { fday3, ft3, fimg3 }
 		}) ;
 
 	}
 
 
+	determineImage = (condition, size) => {
+		let imgSrc = "";
+
+		//determine which image to use
+		switch (condition) {
+			case "Sunny":
+				imgSrc = "../../assets/icons/sunny";
+				break;
+			case "Partly Cloudy":
+			case "Mostly Cloudy":
+				imgSrc = "../../assets/icons/cloudy";
+				break;
+			case "Raining":
+				imgSrc = "../../assets/icons/rain";
+				break;
+			//and so on - in stored data its mostly cloudy
+			default:
+				imgSrc = "../../assets/icons/sunny";
+				break;
+		}
+
+		return imgSrc + size + ".png";
+
+	}
+
 		//weather icons from https://www.iconfinder.com/icons/1530392/sun_sunny_temperature_weather_icon#size=256
 
-}
 
 }
 

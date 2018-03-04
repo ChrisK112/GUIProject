@@ -6,22 +6,23 @@ import style from './style';
 export default class WeatherBox extends Component {
 
     // rendering a function when the button is clicked
-    render() {
-        return (
-            <div class={ style.weatherBox }>
+	render() {
 
-                <div>
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-
-                </div>
-                <div class={ style.today }>
+		return (
+			<div class={ style.weatherBox }>
+				<div>
+					<div class = {style.futureDay}>{ this.props.f1.fday1 } <img src= { this.props.f1.fimg1 }></img> { this.props.f1.ft1 }&#176;C </div>
+					<div class = {style.futureDay}>{ this.props.f2.fday2 } <img src= {this.props.f2.fimg2 }></img> { this.props.f2.ft2 }&#176;C </div>
+					<div class = {style.futureDayLast}>{ this.props.f3.fday3 } <img src= { this.props.f3.fimg3 } ></img> { this.props.f3.ft3 }&#176;C </div>
+				</div>
+				<div class ={ style.today }>
 					TODAY
+					<div class = { style.condition }> <img src = { this.props.cond } > </img> </div>
+					<div class = { style.temperature }>{ this.props.temp }&#176;C </div>
+				</div>
 
-                </div>
-
-            </div>
-        );
-    }
+			</div>
+		);
+	}
 }
+

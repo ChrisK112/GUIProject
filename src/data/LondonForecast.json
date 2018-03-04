@@ -178,7 +178,7 @@
 		  "fahrenheit": "54",
 		  "celsius": "12"
 		},
-		"conditions": "Partly Cloudy",
+		"conditions": "Sunny",
 		"icon": "partlycloudy",
 		"icon_url": "http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
 		"skyicon": "mostlysunny",
@@ -250,7 +250,7 @@
 		  "fahrenheit": "54",
 		  "celsius": "12"
 		},
-		"conditions": "Partly Cloudy",
+		"conditions": "Raining",
 		"icon": "partlycloudy",
 		"icon_url": "http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
 		"skyicon": "partlycloudy",
@@ -322,7 +322,7 @@
 		  "fahrenheit": "52",
 		  "celsius": "11"
 		},
-		"conditions": "Fog",
+		"conditions": "Mostly Cloudy",
 		"icon": "partlycloudy",
 		"icon_url": "http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
 		"skyicon": "mostlysunny",
