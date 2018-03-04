@@ -21,9 +21,6 @@ export default class Iphone extends Component {
 		super(props);
 		// temperature state
 		this.state.temp = "";
-		this.state.fc1 = "10";
-		this.state.fc2 = "20";
-		this.state.fc3 = "30";
 		this.fetchWeatherData();
 		this.fetchForecastData();
 		// button display state
@@ -54,8 +51,7 @@ export default class Iphone extends Component {
 	//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
 
 	fetchForecastData = () => {
-
-		//this.parseResponseF(wDataForecast);
+		this.parseResponseF(wDataForecast);
 
 
 	}
@@ -72,9 +68,9 @@ export default class Iphone extends Component {
 			<div class= { style.blur } ></div>
 			<div class={ style.weatherBox }>
 				<div>
-					<div class = {style.futureDay}>{ this.state.fc1 }Mon</div>
-					<div class = {style.futureDay}>{ this.state.fc2 }Tue</div>
-					<div class = {style.futureDayLast}>{ this.state.fc3 }Wed</div>
+					<div class = {style.futureDay}>Mon <img src = "../../assets/icons/sunny32.png"> </img> { this.state.fc1 }</div>
+					<div class = {style.futureDay}>Tue <img src = "../../assets/icons/sunCloud32.png"> </img> { this.state.fc2 }</div>
+					<div class = {style.futureDayLast}>Wed <img src = "../../assets/icons/cloudy32.png"> </img> { this.state.fc3 }</div>
 				</div>
 				<div class ={ style.today }>
 					TODAY
@@ -101,10 +97,14 @@ export default class Iphone extends Component {
 	}
 
 	parseResponseF = (parsed_json) => {
-		var ftemp_c = parsed_json['forecast']['simple_forecast']['forecastday']['high']['celsius'];
+		var ftemp_c1 = parsed_json.forecast.simpleforecast.forecastday[1].high.celsius;
+		var ftemp_c2 = parsed_json.forecast.simpleforecast.forecastday[2].high.celsius;
+		var ftemp_c3 = parsed_json.forecast.simpleforecast.forecastday[3].high.celsius;
 
 		this.setState({
-			fc : ftemp_c
+			fc1 : ftemp_c1,
+			fc2 : ftemp_c2,
+			fc3 : ftemp_c3
 		}) ;
 
 	}
