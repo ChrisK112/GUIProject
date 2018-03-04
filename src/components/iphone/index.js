@@ -8,10 +8,11 @@ import $ from 'jquery';
 // import the Button component
 import Button from '../button';
 
-import WeatherBox from '../weatherbox';
 
 import weatherData from '../../data/London.json';
-import wDataForecast from '../../data/LondonForecast.json'
+
+import wDataForecast from '../../data/LondonForecast.json';
+
 
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
@@ -20,17 +21,22 @@ export default class Iphone extends Component {
 	constructor(props){
 		super(props);
 		// temperature state
-		this.state.temp = "WEFWQ";
+		this.state.temp = "";
+		this.fetchWeatherData();
+		this.fetchForecastData();
+
 		// button display state
 		this.setState({ display: true });
 	}
+
+
 
 	// a call to fetch weather data via wunderground
 	fetchWeatherData = () => {
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
 		//for forecast, it would be
 		//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
-		
+
 		/*
 		var url = "http://api.wunderground.com/api/3aec23f2e15b08b5/conditions/q/UK/London.json";
 		$.ajax({
@@ -41,16 +47,16 @@ export default class Iphone extends Component {
 		})
 		*/
 		this.parseResponse(weatherData);
-		
+
+
 	}
 	//for forecast, it would be
 	//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
-	
+
 	fetchForecastData = () => {
-		
 		this.parseResponseF(wDataForecast);
-		
-		
+
+
 	}
 
 	// the main render method for the iphone component
@@ -59,42 +65,61 @@ export default class Iphone extends Component {
 		this.fetchForecastData;
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
-		
 		// display all weather data
 		return (
 			<div class={ style.container }>
-				<div class={ style.girl_container }></div>
-				<div class= { style_iphone.container }> </div>
-				<WeatherBox>
-					<div class={ style.forecast }>{ this.state.fc }</div>
-					<div class={ style.city }>{ this.state.locate }</div>
-					<div class={ style.conditions }>{ this.state.cond }</div>
-					<span class={ tempStyles }>{ this.state.temp }</span>
-				</WeatherBox>
+			<div class={ style.girl_container }></div>
+			<div class= { style_iphone.container }> </div>
+			<div class= { style.blur } ></div>
+			<div class={ style.weatherBox }>
+				<div>
+					<div class = {style.futureDay}>Mon <img src = "../../assets/icons/sunny32.png"> </img> { this.state.fc1 }</div>
+					<div class = {style.futureDay}>Tue <img src = "../../assets/icons/sunCloud32.png"> </img> { this.state.fc2 }</div>
+					<div class = {style.futureDayLast}>Wed <img src = "../../assets/icons/cloudy32.png"> </img> { this.state.fc3 }</div>
+				</div>
+				<div class ={ style.today }>
+					TODAY
+					<div class = { style.condition }> <img src = "../../assets/icons/cloudy128.png"> </img> </div>
+					<div class = { style.temperature }>{ this.state.temp }&#176;C</div>
+				</div>
+
 			</div>
+		</div>
 		);
 	}
 
 	parseResponse = (parsed_json) => {
-		var location = parsed_json['current_observation']['display_location']['city'];
 		var temp_c = parsed_json['current_observation']['temp_c'];
 		var conditions = parsed_json['current_observation']['weather'];
 		
 
+
+
 		// set states for fields so they could be rendered later on
 		this.setState({
-			locate: location,
 			temp: temp_c,
 			cond : conditions
-		});      
+		});
+
 	}
-	
+
 	parseResponseF = (parsed_json) => {
-		var ftemp_c = parsed_json['forecast']['simple_forecast']['forecastday']['high']['celsius'];
-		
+		var ftemp_c1 = parsed_json.forecast.simpleforecast.forecastday[1].high.celsius;
+		var ftemp_c2 = parsed_json.forecast.simpleforecast.forecastday[2].high.celsius;
+		var ftemp_c3 = parsed_json.forecast.simpleforecast.forecastday[3].high.celsius;
+
 		this.setState({
-			fc : ftemp_c
+			fc1 : ftemp_c1,
+			fc2 : ftemp_c2,
+			fc3 : ftemp_c3
 		}) ;
-		
+
 	}
+
+
+		//weather icons from https://www.iconfinder.com/icons/1530392/sun_sunny_temperature_weather_icon#size=256
+
 }
+
+}
+

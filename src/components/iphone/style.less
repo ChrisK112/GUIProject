@@ -1,62 +1,123 @@
-@import '~style/helpers';
 
-.container { 
-	display: flex;
-	flex-direction: column;
-	background-image: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
-	background-color: #555;
-	color: #fff;
-	width: 414px;
-	height: 736px;
-	text-align: center;
-	margin: 0 auto;
-	position: relative;
-	background-size: contain;
+@import '../../style/helpers.less';
+@font-face { font-family: munro; src: url('../../assets/fonts/munro/Munro.ttf'); }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-image: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
+  background-color: #555;
+  color: #fff;
+  width: 414px;
+  height: 736px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  background-size: 100% 100%;
+
+
 }
 .header {
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .details {
-	flex: 4;
+  flex: 4;
 }
 .city {
-	flex: 1;
-	font-size: 1.7em;
-	font-weight: 400;	
+  flex: 1;
+  font-size: 1.7em;
+  font-weight: 400;
 }
-.conditions {
-	flex: 1;
-	font-size: 1em;
+.condition {
+  min-height: 50%;
+  padding-top: 30%;
+  padding-bottom: 10%;
+  padding-left: 20%;
+  padding-right: 20%;
+  flex: 1;
 }
 .temperature {
-	flex: 2;
-	margin-top: 0;
-	font-size: 4.8em;
-	font-weight: 300;
-	letter-spacing: -12px;
+  max-height: inherit;
+  padding: 20%;
+  flex: 2;
+  margin-top: 0;
+  font-size: 2.5em;
+  letter-spacing: 5px;
 }
+.futureDay {
+  border-right-style: solid;
+  border-bottom-style: solid;
+  font-family: munro;
+  width: 33.33%;
+  float: left;
+  background: transparent;
+  padding: 2em;
+  padding-top: 0em;
+  height: 5em;
+}
+
+.futureDayLast {
+  border-bottom-style: solid;
+  font-family: munro;
+  width: 33.33%;
+  float: left;
+  background: transparent;
+  padding: 2em;
+  padding-top: 0em;
+  height: 5em;
+}
+
+.blur {
+  background: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
+  background-size: 100% 100%;
+  width: inherit;
+  height: inherit;
+  clip-path: inset(10% 5% 10% 20%);
+  position: absolute;
+  filter: blur(5px);
+}
+
+
+
+.weatherBox {
+  border-style: solid;
+  background: transparent;
+  bottom: 10%;
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  left: 20%;
+}
+
+.today {
+  font-family: munro;
+  padding-top: 25%;
+  height: 100%;
+  font-size: 2em
+}
+
+.filled:after {
+  content: "mf3kmf3ifm3iWS°";
+  margin: 0 0 0 1rem;
+  font-size: 0.5em;
+  font-weight: 100;
+  display: inline-block;
+  padding-top: 10px;
+  vertical-align: top;
 .forecast{
   
 }
 
-.filled:after {
-	content: "mf3kmf3ifm3iWS°";
-	margin: 0 0 0 1rem;
-	font-size: 0.5em;
-	font-weight: 100;
-	display: inline-block;
-	padding-top: 10px;
-	vertical-align: top;
 }
 .girl_container {
-	background: url('../../assets/girl/girl.png') no-repeat;
-	width: 229px;
-	height: 518px;
-	bottom:0;
-	left: 0;
-	background-size: contain;
-	position: absolute;
-	z-index: 1000;
+  background: url('../../assets/girl/girl.png') no-repeat;
+  width: 229px;
+  height: 518px;
+  bottom:0;
+  left: 0;
+  background-size: contain;
+  position: absolute;
+  z-index: 1000;
 }

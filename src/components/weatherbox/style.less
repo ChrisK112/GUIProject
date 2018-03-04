@@ -1,24 +1,42 @@
 @import '~style/helpers';
 
 /* the next 3 days boxes */
-.weatherBox > div:first-child > div {
-    width: 33.33%;
-    float: left;
-    background: orange;
-    padding: 2em;
-    height: 5em;
+
+.futureDay {
+  border-right-style: solid;
+  border-bottom-style: solid;
+  font-family: munro;
+  width: 33.33%;
+  float: left;
+  background: transparent;
+  padding: 2em;
+  height: 5em;
 }
 
 .weatherBox {
-    background: skyblue;
-    bottom: 10%;
-    position: absolute;
-    right: 5%;
-    top: 10%;
-    left: 20%;
+  border-style: solid;
+  background: transparent;
+  bottom: 10%;
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  left: 20%;
 }
 
 .today {
-    padding-top: 25%;
-    height: 100%;
+  font-family: munro;
+  padding-top: 25%;
+  height: 100%;
+  font-size: 2em
+}
+
+.blur {
+  background: url('../../assets/backgrounds/pexels-photo-315191.jpeg');
+  background-size: 100% 100%;
+  width: inherit;
+  height: inherit;
+  clip-path: inset(10% 5% 10% 20%);
+  position: absolute;
+  filter: blur(5px);
+
 }
