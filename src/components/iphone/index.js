@@ -8,11 +8,8 @@ import $ from 'jquery';
 // import the Button component
 import Button from '../button';
 
-
 import weatherData from '../../data/London.json';
-
 import wDataForecast from '../../data/LondonForecast.json';
-
 
 import WeatherBox from "../weatherbox";
 
@@ -77,16 +74,17 @@ export default class Iphone extends Component {
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
 		// display all weather data
 		return (
+			<div id="app">
+				<div class={ style.container }>
+					<a class={ style.settings } href="/iphonesettings">Settings</a>
+					<div class={ style.girl_container }></div>
+					<div class={ style_iphone.container }></div>
+					<div class={ style.blur }></div>
 
-			<div class={ style.container }>
-			<div class={ style.girl_container }></div>
-			<div class= { style_iphone.container }> </div>
-			<div class= { style.blur } ></div>
+					<WeatherBox temp={this.state.temp} cond={this.state.cond} f1={this.state.fd1} f2={this.state.fd2} f3={this.state.fd3}/>
+				</div>
 
-			<WeatherBox temp={this.state.temp} cond={this.state.cond} f1={this.state.fd1} f2={this.state.fd2} f3={this.state.fd3}/>
-
-
-		</div>
+			</div>
 		);
 	}
 

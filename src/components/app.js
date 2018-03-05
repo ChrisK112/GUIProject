@@ -1,4 +1,10 @@
 // import preact
+
+/*
+
+THIS FILE IS NO LONGER NECESSARY
+
+
 import { h, Component } from 'preact';
 
 // import required Components from 'components/'
@@ -22,9 +28,9 @@ export default class App extends Component {
 		}
 	}
 
-	/*
-		A render method to display the required Component on screen (iPhone or iPad) : selected by checking component's isTablet state
-	*/
+	
+	//	A render method to display the required Component on screen (iPhone or iPad) : selected by checking component's isTablet state
+	
 	render(){
 		if(this.state.isTablet){
 			return (
@@ -42,3 +48,5 @@ export default class App extends Component {
 		}
 	}
 }
+
+*/
