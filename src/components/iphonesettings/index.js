@@ -13,6 +13,7 @@ export default class IphoneSettings extends Component {
     // a constructor with initial set states
     constructor(props){
         super(props);
+        console.log(props);
     }
 
     // the main render method for the iphone component
@@ -24,6 +25,11 @@ export default class IphoneSettings extends Component {
                 <div class={ style.container }>
                     <h1>Settings</h1>
                     <a class={ style.settings } href="/">Back</a>
+                    <div>
+                    <form>
+                    <label>Location: <input type="text" value={ this.props.settings.location } /></label>
+                    </form>
+                    </div>
                 </div>
 
             </div>

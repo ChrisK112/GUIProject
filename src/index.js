@@ -1,7 +1,7 @@
 // import 'promise-polyfill';
 // import 'isomorphic-fetch';
 import Router from 'preact-router';
-import { h, render } from 'preact';
+import { h, render, Component } from 'preact';
 
 import Iphone from './components/iphone';
 import Ipad from './components/ipad';
@@ -11,15 +11,30 @@ import './style';
 
 let root;
 
-const Main = () => (
-    
-    <Router>
-        <Iphone path="/"  />
-        <Ipad path="/tablet" />
-        <IphoneSettings path="/iphonesettings" />
-    </Router>   
+class Main extends Component {
 
-);
+    constructor(props) {
+
+        super(props);
+
+        this.state.settings = {
+            location: 'London',
+            temperature_scale: 'c'
+        }
+
+    }
+
+    render() {
+        return(
+            <Router>
+                <Iphone path="/" settings={ this.state.settings } />
+                <Ipad path="/tablet" settings={ this.state.settings } />
+                <IphoneSettings path="/iphonesettings" settings={ this.state.settings } />
+            </Router>
+        ); 
+    }  
+
+}
 
 function init() {
 	//let App = require('./components/app').default;
