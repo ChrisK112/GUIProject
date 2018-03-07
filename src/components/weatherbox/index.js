@@ -12,6 +12,10 @@ export default class WeatherBox extends preact.Component {
 		return this.props.settings.temperature_scale == 'f' ? 'F' : 'C';
 	}
 
+	getScale = () => {
+		return this.props.settings.temperature_scale == 'f' ? 'F' : 'C';
+	}
+
     // rendering a function when the button is clicked
 	render() {
 
