@@ -91,13 +91,13 @@ export default class Iphone extends preact.Component {
 		}
 
 		let conditions = parsed_json['current_observation']['weather'];
-		let condImg = this.determineImage(conditions, "128");
+		let condImg = this.determineImage(conditions);
 
 
 		// set states for fields so they could be rendered later on
 		this.setState({
 			temp: temp_c,
-			cond : condImg,
+			cond : condImg
 		});
 
 	}
@@ -121,9 +121,9 @@ export default class Iphone extends preact.Component {
 
 		//conditions img
 
-		let fimg1 = this.determineImage(fc1, "32");
-		let fimg2 = this.determineImage(fc2, "32");
-		let fimg3 = this.determineImage(fc3, "32");
+		let fimg1 = this.determineImage(fc1);
+		let fimg2 = this.determineImage(fc2);
+		let fimg3 = this.determineImage(fc3);
 
 		//days
 		let fday1 = parsed_json.forecast.simpleforecast.forecastday[1].date.weekday_short;
@@ -140,7 +140,7 @@ export default class Iphone extends preact.Component {
 	}
 
 
-	determineImage = (condition, size) => {
+	determineImage = (condition) => {
 		let imgSrc = "";
 
 		//determine which image to use
@@ -161,7 +161,7 @@ export default class Iphone extends preact.Component {
 				break;
 		}
 
-		return imgSrc + size + ".png";
+		return imgSrc + ".png";
 
 	}
 

@@ -1,4 +1,4 @@
-@import '~style/helpers';
+@import '../style/helpers';
 
 /* the next 3 days boxes */
 
@@ -26,6 +26,10 @@
   height: 5em;
 }
 
+#boximg {
+  height : 80%
+}
+
 .weatherBox {
   border-style: solid;
   background: transparent;
@@ -43,18 +47,21 @@
   font-size: 2em
 }
 
+.todayText {
+  font-family: munro;
+  font-size : 1em;
+  word-wrap: break-word;
+}
+
 .condition {
-  min-height: 50%;
-  padding-top: 30%;
-  padding-bottom: 10%;
-  padding-left: 20%;
-  padding-right: 20%;
-  flex: 1;
+  height: 10%;
+  width : 50%;
+  transform : scale(0.5);
 }
 
 .temperature {
   max-height: inherit;
-  padding: 20%;
+  padding-top: 80%;
   flex: 2;
   margin-top: 0;
   font-size: 2.5em;
