@@ -32,14 +32,18 @@ export default class IphoneSettings extends preact.Component {
 			<div id="app">
 				<div class={ styleiphone.container }>
 					<SettingsCog page = { "/" }/>
-					<h1>App Setup</h1>
-					<div>
+					<div class = { style.settings } >
+						<h1>App Setup</h1>
 						<form>
-							<label>Location: <input type="text" value={ this.props.settings.location } /></label> <br> </br>
-							<label>Temperature units </label> <br> </br>
-							<div onChange={ this.setUnit.bind(this) }>
-								<label>Celsius <input type = "radio" name ="tUnits" value = "c" defaultChecked={this.props.settings.temperature_scale === 'c'} /></label>  <br> </br>
-								<label>Fahrenheit <input type = "radio" name ="tUnits" value = "f" defaultChecked={this.props.settings.temperature_scale === 'f'} /></label>  <br> </br>
+							<div>
+								<label>Location: <input type="text" value={ this.props.settings.location } /></label>
+							</div>
+							<div>
+								<label>Temperature units </label>
+								<div onChange={ this.setUnit.bind(this) }>
+									<label>Celsius <input type = "radio" name ="tUnits" value = "c" defaultChecked={this.props.settings.temperature_scale === 'c'} /></label>
+									<label>Fahrenheit <input type = "radio" name ="tUnits" value = "f" defaultChecked={this.props.settings.temperature_scale === 'f'} /></label>
+								</div>
 							</div>
 
 							<a href="/"><button>Finish Setup</button></a>
