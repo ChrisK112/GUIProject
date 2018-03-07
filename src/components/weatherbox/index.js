@@ -24,7 +24,7 @@ export default class WeatherBox extends preact.Component {
 					<div class = {style.futureDayLast}>{ this.props.f3.fday3 }  <img id = { style.boximg } src= { this.props.f3.fimg3 } ></img>   { this.props.f3.ft3 }&#176;{ this.getUnit() } </div>
 				</div>
 				<div class ={ style.today }>
-					<h1 class = { style.todayText } > TODAY } </h1>
+					<h1 class = { style.todayText } > TODAY </h1>
 					<h2 class = { style.todayText } > { this.getLoc() } </h2>
 					<div class = { style.condition } > <img src = { this.props.cond } > </img> </div>
 					<div class = { style.temperature } >{ this.props.temp }&#176;{ this.getUnit() } </div>
