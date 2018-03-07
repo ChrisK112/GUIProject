@@ -13,33 +13,34 @@ let root;
 
 class Main extends Component {
 
-    constructor(props) {
+	constructor(props) {
 
-        super(props);
+		super(props);
 
-        this.state.settings = {
-            location: 'London',
-            temperature_scale: 'c'
-        }
+		this.state.settings = {
+			location: 'London',
+			temperature_units: 'C'
+		};
 
-    }
+	}
 
-    render() {
-        return(
+
+	render() {
+		return (
             <Router>
                 <Iphone path="/" settings={ this.state.settings } />
                 <Ipad path="/tablet" settings={ this.state.settings } />
                 <IphoneSettings path="/iphonesettings" settings={ this.state.settings } />
             </Router>
-        ); 
-    }  
+		);
+	}
 
 }
 
 function init() {
 	//let App = require('./components/app').default;
 	//root = render(<App />, document.body, root);
-    root = render(<Main />, document.body, root);
+	root = render(<Main />, document.body, root);
 
 }
 
