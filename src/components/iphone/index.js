@@ -15,7 +15,6 @@ import wDataForecast from '../../data/LondonForecast.json';
 import WeatherBox from "../weatherbox";
 
 
-
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
 
@@ -90,7 +89,7 @@ export default class Iphone extends Component {
 					<div class={ style_iphone.container }></div>
 					<div class={ style.blur }></div>
 
-					<WeatherBox temp={this.state.temp} cond={this.state.cond} f1={this.state.fd1} f2={this.state.fd2} f3={this.state.fd3}/>
+					<WeatherBox settings={ this.props.settings } temp={this.state.temp} cond={this.state.cond} f1={this.state.fd1} f2={this.state.fd2} f3={this.state.fd3}/>
 				</div>
 
 			</div>
@@ -100,6 +99,11 @@ export default class Iphone extends Component {
 	parseResponse = (parsed_json) => {
 
 		let temp_c = parsed_json['current_observation']['temp_c'];
+
+		if (this.props.settings.temperature_scale == 'f') {
+			temp_c = parsed_json['current_observation']['temp_f'];
+		}
+
 		let conditions = parsed_json['current_observation']['weather'];
 		let condImg = this.determineImage(conditions, "128");
 
@@ -118,6 +122,13 @@ export default class Iphone extends Component {
 		let ft1 = parsed_json.forecast.simpleforecast.forecastday[1].high.celsius;
 		let ft2 = parsed_json.forecast.simpleforecast.forecastday[2].high.celsius;
 		let ft3 = parsed_json.forecast.simpleforecast.forecastday[3].high.celsius;
+
+		if (this.props.settings.temperature_scale == 'f') {
+			ft1 = parsed_json.forecast.simpleforecast.forecastday[1].high.fahrenheit;
+			ft2 = parsed_json.forecast.simpleforecast.forecastday[2].high.fahrenheit;
+			ft3 = parsed_json.forecast.simpleforecast.forecastday[3].high.fahrenheit;
+		}
+
 
 		//conditions
 		let fc1 = parsed_json.forecast.simpleforecast.forecastday[1].conditions;

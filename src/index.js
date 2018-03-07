@@ -19,7 +19,7 @@ class Main extends Component {
 
         this.state.settings = {
             location: 'London',
-            temperature_scale: 'c'
+            temperature_scale: 'f'
         }
 
     }
