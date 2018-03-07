@@ -1,9 +1,16 @@
-// import preact
+import preact from 'preact';
 import { h, render, Component } from 'preact';
 
 import style from './style';
 
-export default class WeatherBox extends Component {
+export default class WeatherBox extends preact.Component {
+
+
+
+
+	getScale = () => {
+		return this.props.settings.temperature_scale == 'f' ? 'F' : 'C';
+	}
 
 	getScale = () => {
 		return this.props.settings.temperature_scale == 'f' ? 'F' : 'C';
