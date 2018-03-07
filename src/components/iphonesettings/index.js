@@ -26,8 +26,7 @@ export default class IphoneSettings extends Component {
         return (
             <div id="app">
                 <div class={ style.container }>
-                    <h1>Settings</h1>
-                    <a class={ style.settings } href="/">Back</a>
+                    <h1>App Setup</h1>
                     <div>
                     <form>
 						<label>Location: <input type="text" value={ this.props.settings.location } /></label> <br> </br>
@@ -36,6 +35,8 @@ export default class IphoneSettings extends Component {
     						<label>Celsius <input type = "radio" name ="tUnits" value = "c" defaultChecked={this.props.settings.temperature_scale === 'c'} /></label>  <br> </br>
     						<label>Fahrenheit <input type = "radio" name ="tUnits" value = "f" defaultChecked={this.props.settings.temperature_scale === 'f'} /></label>  <br> </br>
                         </div>
+
+                        <a href="/"><button>Finish Setup</button></a>
 
                     </form>
                     </div>
