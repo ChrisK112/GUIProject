@@ -21,7 +21,7 @@ export default class IphoneSettings extends preact.Component {
 
 
 	setUnit = function(event) {
-		this.props.settings.temperature_scale = event.target.value;
+		this.props.settings.temperature_units = event.target.value;
 	}
 
 	// the main render method for the iphone component
@@ -36,13 +36,13 @@ export default class IphoneSettings extends preact.Component {
 						<h1>App Setup</h1>
 						<form>
 							<div>
-								<label>Location: <input type="text" value={ this.props.settings.location } /></label>
+								<label class={ styleiphone.htr }>Location: <input type="text" value={ this.props.settings.location } /></label>
 							</div>
 							<div>
 								<label>Temperature units </label>
 								<div onChange={ this.setUnit.bind(this) }>
-									<label>Celsius <input type = "radio" name ="tUnits" value = "c" defaultChecked={this.props.settings.temperature_scale === 'c'} /></label>
-									<label>Fahrenheit <input type = "radio" name ="tUnits" value = "f" defaultChecked={this.props.settings.temperature_scale === 'f'} /></label>
+									<label class={ styleiphone.htr }>Celsius <input type = "radio" name ="tUnits" value = "C" defaultChecked={this.props.settings.temperature_units === 'C'} /></label>
+									<label class={ styleiphone.htr }>Fahrenheit <input type = "radio" name ="tUnits" value = "F" defaultChecked={this.props.settings.temperature_units === 'F'} /></label>
 								</div>
 							</div>
 

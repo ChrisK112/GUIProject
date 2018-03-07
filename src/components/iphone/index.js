@@ -86,6 +86,10 @@ export default class Iphone extends preact.Component {
 	parseResponse = (parsed_json) => {
 
 		let temp_c = parsed_json['current_observation']['temp_c'];
+		if (this.props.settings.temperature_units == 'F') {
+			temp_c = parsed_json['current_observation']['temp_f'];
+		}
+
 		let conditions = parsed_json['current_observation']['weather'];
 		let condImg = this.determineImage(conditions, "128");
 
@@ -104,6 +108,11 @@ export default class Iphone extends preact.Component {
 		let ft1 = parsed_json.forecast.simpleforecast.forecastday[1].high.celsius;
 		let ft2 = parsed_json.forecast.simpleforecast.forecastday[2].high.celsius;
 		let ft3 = parsed_json.forecast.simpleforecast.forecastday[3].high.celsius;
+		if (this.props.settings.temperature_units == 'F') {
+			ft1 = parsed_json.forecast.simpleforecast.forecastday[1].high.fahrenheit;
+			ft2 = parsed_json.forecast.simpleforecast.forecastday[2].high.fahrenheit;
+			ft3 = parsed_json.forecast.simpleforecast.forecastday[3].high.fahrenheit;
+		}
 
 		//conditions
 		let fc1 = parsed_json.forecast.simpleforecast.forecastday[1].conditions;
