@@ -17,6 +17,56 @@ export default class IphoneSettings extends preact.Component {
 	constructor(props){
 		super(props);
 		console.log(props);
+		this.state = {location: this.props.settings.location}
+	}
+
+	handleChange = (e) =>{ 
+	  this.setState({location: e.target.value});
+	}
+
+	locationChange(event) {
+		this.setState({value})
+	}
+
+
+	reverseGeocode = function(lat, lon) {
+
+		let url = 'https://api.postcodes.io/postcodes';
+		let that = this;
+
+		$.ajax({
+			url: url,
+			data: {lat, lon},
+			dataType: "jsonp",
+			success: function(json) {
+				console.log(json);
+				if (json.status == 200) {
+					that.props.settings.geocode = json.result;
+					if (json.result.length) {
+						that.setState({location: json.result[0].postcode});
+						that.props.settings.location = json.result[0].postcode;
+						console.log('set location to postcode ' + json.result[0].postcode);
+					}
+
+				} else {
+					console.log('geocode failed with ' + json.status);
+				}
+			},
+			error: function(req, err) {
+				console.log('reverse geocode ajax failed');
+			}
+
+
+		})
+	}
+
+	geoLocate = function(e) {
+		let that = this;
+		navigator.geolocation.getCurrentPosition(function(position) {
+			console.log(position.coords.latitude, position.coords.longitude);
+			that.reverseGeocode(position.coords.latitude, position.coords.longitude);
+		});
+		e.preventDefault();
 	}
 
 
@@ -36,7 +86,8 @@ export default class IphoneSettings extends preact.Component {
 						<h1>App Setup</h1>
 						<form>
 							<div>
-								<label class={ styleiphone.htr }>Location: <input type="text" value={ this.props.settings.location } /></label>
+								<label class={ styleiphone.htr }>Location: <input type="text" value={ this.state.location } onChange={ this.handleChange } /></label>
+								{ "geolocation" in navigator && <a href="#" onClick={ this.geoLocate.bind(this) }>Geolocate</a>}
 							</div>
 							<div>
 								<label>Temperature units </label>

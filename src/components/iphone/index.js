@@ -13,9 +13,6 @@ import wDataForecast from '../../data/LondonForecast.json';
 
 import WeatherBox from "../weatherbox";
 
-
-
-
 export default class Iphone extends preact.Component {
 	//var Iphone = React.createClass({
 
