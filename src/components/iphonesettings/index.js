@@ -27,7 +27,12 @@ export default class IphoneSettings extends Component {
                     <a class={ style.settings } href="/">Back</a>
                     <div>
                     <form>
-                    <label>Location: <input type="text" value={ this.props.settings.location } /></label>
+						<label>Location: <input type="text" value={ this.props.settings.location } /></label> <br> </br>
+						<label>Temperature units </label> <br> </br>
+						<input type = "radio" name ="tUnits" value = "C"> Centigrade </input>  <br> </br>
+						<input type = "radio" name ="tUnits" value = "F"> Fahrenheit </input>  <br> </br>
+
+
                     </form>
                     </div>
                 </div>
