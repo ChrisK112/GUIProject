@@ -1,5 +1,7 @@
 import preact from 'preact';
 import { h, render, Component } from 'preact';
+import Router from 'preact-router';
+
 // import stylesheets for ipad & button
 import style from './style';
 // import jquery for API calls
@@ -10,6 +12,7 @@ import SettingsCog from '../settingscog';
 
 import weatherData from '../../data/London.json';
 import wDataForecast from '../../data/LondonForecast.json';
+import failedLookup from '../../data/FailedLookup.json';
 
 import WeatherBox from "../weatherbox";
 
@@ -43,6 +46,7 @@ export default class Iphone extends preact.Component {
 		})
 		*/
 		this.parseResponse(weatherData);
+		//this.parseResponse(failedLookup);
 
 
 	}
@@ -51,6 +55,7 @@ export default class Iphone extends preact.Component {
 
 	fetchForecastData = () => {
 		this.parseResponseF(wDataForecast);
+		//this.parseResponseF(failedLookup);
 
 	}
 
@@ -60,6 +65,8 @@ export default class Iphone extends preact.Component {
 	render() {
 		this.fetchWeatherData;
 		this.fetchForecastData;
+
+		console.log(this.state);
 
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
@@ -82,13 +89,29 @@ export default class Iphone extends preact.Component {
 
 	parseResponse = (parsed_json) => {
 
-		let temp_c = parsed_json['current_observation']['temp_c'];
+		let temp_c, conditions, condImg;
+
+		if (parsed_json.response.error) {
+			temp_c = 500;
+			conditions = 'Error';
+			condImg = this.determineImage(conditions);
+			this.setState({
+				temp: temp_c,
+				cond : condImg
+			});
+
+			this.locationError(parsed_json.response.error.description);
+
+			return;
+		}
+
+		temp_c = parsed_json['current_observation']['temp_c'];
 		if (this.props.settings.temperature_units == 'F') {
 			temp_c = parsed_json['current_observation']['temp_f'];
 		}
 
-		let conditions = parsed_json['current_observation']['weather'];
-		let condImg = this.determineImage(conditions);
+		conditions = parsed_json['current_observation']['weather'];
+		condImg = this.determineImage(conditions);
 
 
 		// set states for fields so they could be rendered later on
@@ -101,10 +124,26 @@ export default class Iphone extends preact.Component {
 
 	parseResponseF = (parsed_json) => {
 
+		if (parsed_json.response.error) {
+	
+			fday1 = fday2 = fday3 = 'Mon';
+			ft1 = ft2 = ft3 = 500;
+			fimg1 = fimg2 = fimg3 = this.determineImage('Error');
+
+			this.setState({
+				fd1 : { fday1, ft1, fimg1 },
+				fd2 : { fday2, ft2, fimg2 },
+				fd3 : { fday3, ft3, fimg3 }
+			}) ;
+			return;
+		}
+
+
 		//temperatures
 		let ft1 = parsed_json.forecast.simpleforecast.forecastday[1].high.celsius;
 		let ft2 = parsed_json.forecast.simpleforecast.forecastday[2].high.celsius;
 		let ft3 = parsed_json.forecast.simpleforecast.forecastday[3].high.celsius;
+
 		if (this.props.settings.temperature_units == 'F') {
 			ft1 = parsed_json.forecast.simpleforecast.forecastday[1].high.fahrenheit;
 			ft2 = parsed_json.forecast.simpleforecast.forecastday[2].high.fahrenheit;
@@ -164,5 +203,12 @@ export default class Iphone extends preact.Component {
 
 		//weather icons from https://www.iconfinder.com/icons/1530392/sun_sunny_temperature_weather_icon#size=256
 
+
+	locationError = (error) => {
+
+		this.props.settings.currentError = 'Please check your location: ' + error;
+		Router.route('/iphonesettings', true);
+
+	}
 
 }

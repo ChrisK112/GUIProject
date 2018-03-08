@@ -20,7 +20,8 @@ class Main extends Component {
 		this.state.settings = {
 			location: 'London',
 			temperature_units: 'C',
-            geocode: null
+            geocode: null,
+            currentError: null
 		};
 
 	}

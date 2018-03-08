@@ -17,7 +17,8 @@ export default class IphoneSettings extends preact.Component {
 	constructor(props){
 		super(props);
 		console.log(props);
-		this.state = {location: this.props.settings.location}
+		this.state = {location: this.props.settings.location, currentError: this.props.settings.currentError}
+		this.props.settings.currentError = null;
 	}
 
 	locationChange(event) {
@@ -86,6 +87,7 @@ export default class IphoneSettings extends preact.Component {
 					<SettingsCog page = { "/" }/>
 					<div class = { style.settings } >
 						<h1>App Setup</h1>
+						{ this.state.currentError && <div class={ style.currentError }>{ this.state.currentError }</div> }
 						<form>
 							<div>
 								<label class={ styleiphone.htr } for="locationInput">Location:</label>
@@ -101,7 +103,6 @@ export default class IphoneSettings extends preact.Component {
 										</a>
 									}
 								</div>
-								}
 							</div>
 							<div>
 								<label>Temperature unit:</label>
