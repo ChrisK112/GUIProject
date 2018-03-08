@@ -72,7 +72,7 @@ export default class IphoneSettings extends preact.Component {
 
 	setLoc = (e) =>{ 
 	  this.setState({location: e.target.value});
-		this.props.settings.location = event.target.value;
+		this.props.settings.location = e.target.value;
 	}
 
 
@@ -88,8 +88,20 @@ export default class IphoneSettings extends preact.Component {
 						<h1>App Setup</h1>
 						<form>
 							<div>
-								<label class={ styleiphone.htr }>Location: <input type="text" value={ this.state.location } onChange={ this.setLoc } /></label>
-								{ "geolocation" in navigator && <a href="#" onClick={ this.geoLocate.bind(this) }>Geolocate</a>}
+								<label class={ styleiphone.htr } for="locationInput">Location:</label>
+								<div class={ style.locationWrapper }>
+									<input type="text" id="locationInput" value={ this.state.location } onChange={ this.setLoc } />
+									{ "geolocation" in navigator && <a href="#" title="Geolocate" onClick={ this.geoLocate.bind(this) }>
+										<div class={ style.geolocate }>
+											<svg id="icon" xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+											    <path d="M512.001,302.46c-115.762,0-209.541,93.808-209.541,209.541c0,115.761,93.779,209.541,209.541,209.541 c115.819,0,209.538-93.779,209.538-209.541C721.539,396.268,627.82,302.46,512.001,302.46z" fill="#fff" />
+											    <path d="M838.411,482.066c-14.439-157.447-138.854-281.92-296.476-296.274V62.986h-59.869v122.807 C324.444,200.146,200.03,324.619,185.588,482.066H62.986v59.869h122.602c14.442,157.389,138.856,281.861,296.479,296.302v122.777 h59.869V838.237c157.621-14.44,282.036-138.913,296.476-296.302h122.603v-59.869H838.411z M512.001,781.407 c-148.736,0-269.409-120.671-269.409-269.407c0-148.766,120.673-269.409,269.409-269.409 c148.792,0,269.406,120.644,269.406,269.409C781.407,660.737,660.793,781.407,512.001,781.407z" fill="#fff" />
+											</svg>
+										</div>
+										</a>
+									}
+								</div>
+								}
 							</div>
 							<div>
 								<label>Temperature units </label>
