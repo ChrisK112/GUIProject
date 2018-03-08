@@ -104,7 +104,7 @@ export default class IphoneSettings extends preact.Component {
 								}
 							</div>
 							<div>
-								<label>Temperature units </label>
+								<label>Temperature unit:</label>
 								<div onChange={ this.setUnit.bind(this) }>
 									<label >Celsius <input type = "radio" name ="tUnits" value = "C" defaultChecked={this.props.settings.temperature_units === 'C'} /></label>
 									<label >Fahrenheit <input type = "radio" name ="tUnits" value = "F" defaultChecked={this.props.settings.temperature_units === 'F'} /></label>
