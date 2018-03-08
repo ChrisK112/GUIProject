@@ -88,7 +88,7 @@ export default class IphoneSettings extends preact.Component {
 						<h1>App Setup</h1>
 						<form>
 							<div>
-								<label class={ styleiphone.htr }>Location: <input type="text" value={ this.state.location } onChange={ this.setLoc } /></label>
+								<label >Location: <input type="text" value={ this.state.location } onChange={ this.setLoc } /></label>
 								{ "geolocation" in navigator && <a href="#" onClick={ this.geoLocate.bind(this) }>Geolocate</a>}
 							</div>
 							<div>
