@@ -54,7 +54,6 @@ class Main extends Component {
 		return (
             <Router>
                 <Iphone path="/" settings={ this.state.settings } />
-                <Ipad path="/tablet" settings={ this.state.settings } />
                 <IphoneSettings path="/iphonesettings" settings={ this.state.settings } />
             </Router>
 		);
