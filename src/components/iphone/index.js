@@ -37,10 +37,13 @@ export default class Iphone extends preact.Component {
 		//for forecast, it would be
 		//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
 
+
+		/* use local storage to cache weather data due to api constraints */
 		let myStorage = window.localStorage;
 		let cwData = myStorage.getItem('wData');
 		let location = this.props.settings.location;
 
+		/* no cache data present */
 		if (!cwData) {
 			// fetch actual data
 			console.log('ajax fetching weather data');
@@ -233,12 +236,12 @@ export default class Iphone extends preact.Component {
 			case "Sunny":
 				imgSrc = "../../assets/icons/sunny";
 				break;
+			case "Overcast":
 			case "Scattered Clouds":
 			case "Partly Cloudy":
 			case "Mostly Cloudy":
 				imgSrc = "../../assets/icons/cloudy";
 				break;
-			case "Overcast":
 			case "Light Rain":
 			case "Heavy Rain":
 			case "Freezing Rain":

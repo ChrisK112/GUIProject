@@ -24,7 +24,12 @@ export default class Settings extends preact.Component {
 
 
 	locationChange(event) {
+		//let myStorage = window.localStorage;
+		//myStorage.removeItem('wData');
+		//myStorage.removeItem('fData');
+
 		this.setState({value});
+
 	}
 
 	saveSettings() {
@@ -48,6 +53,13 @@ export default class Settings extends preact.Component {
 					that.props.settings.geocode = json.result;
 					if (json.result.length) {
 						that.setState({location: json.result[0].postcode});
+
+						/*
+						let myStorage = window.localStorage;
+						myStorage.removeItem('wData');
+						myStorage.removeItem('fData');
+						*/
+					
 						that.props.settings.location = json.result[0].postcode;
 						that.saveSettings();
 						console.log('set location to postcode ' + json.result[0].postcode);
