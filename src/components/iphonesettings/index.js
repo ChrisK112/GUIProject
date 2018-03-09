@@ -49,7 +49,7 @@ export default class IphoneSettings extends preact.Component {
 					if (json.result.length) {
 						that.setState({location: json.result[0].postcode});
 						that.props.settings.location = json.result[0].postcode;
-						this.saveSettings();
+						that.saveSettings();
 						console.log('set location to postcode ' + json.result[0].postcode);
 					}
 

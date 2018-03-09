@@ -36,31 +36,33 @@ export default class Iphone extends preact.Component {
 		// API URL with a structure of : http://api.wunderground.com/api/key/feature/q/country-code/city.json
 		//for forecast, it would be
 		//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
-
-		/*
-		var url = "http://api.wunderground.com/api/3aec23f2e15b08b5/conditions/q/UK/London.json";
-		$.ajax({
-			url: url,
-			dataType: "jsonp",
-			success : this.parseResponse,
-			error : function(req, err){ console.log('API call failed ' + err); }
-		})
-		*/
 		
 		let myStorage = window.localStorage;
 		let cwData = myStorage.getItem('wData');
+		let location = this.props.settings.location;
 
 		if (!cwData) {
 			// fetch actual data
-			cwData = weatherData;
-			myStorage.setItem('wData', JSON.stringify(cwData));
+			console.log('ajax fetching weather data');
+
+			let url = 'http://api.wunderground.com/api/3aec23f2e15b08b5/conditions/q/UK/' + location + '.json';
+			let that = this;
+
+			$.ajax({
+				url: url,
+				dataType: "jsonp",
+				success : function(response) {
+					myStorage.setItem('wData', JSON.stringify(response));
+					that.parseResponse(response);
+				},
+				error : function(req, err){ console.log('API call failed ' + err); }
+			});
+
 		} else {
 			console.log('cached weather data loaded');
 			cwData = JSON.parse(cwData);
+			this.parseResponse(cwData);
 		}
-
-		this.parseResponse(cwData);
-
 		//this.parseResponse(failedLookup);
 
 
@@ -72,18 +74,35 @@ export default class Iphone extends preact.Component {
 
 		let myStorage = window.localStorage;
 		let cfData = myStorage.getItem('fData');
+		let location = this.props.settings.location;
 
 		if (!cfData) {
+
+			console.log('ajax fetching forecast data');
+
+			let url = 'http://api.wunderground.com/api/3aec23f2e15b08b5/forecast/q/UK/' + location + '.json';
+			let that = this;
+
+			$.ajax({
+				url: url,
+				dataType: "jsonp",
+				success : function(response) {
+					myStorage.setItem('fData', JSON.stringify(response));
+					that.parseResponseF(response);
+				},
+				error : function(req, err){ console.log('API call failed ' + err); }
+			});
+
 			// fetch actual data
-			cfData = wDataForecast;
-			myStorage.setItem('fData', JSON.stringify(cfData));
+			//cfData = wDataForecast;
+			//myStorage.setItem('fData', JSON.stringify(cfData));
 
 		} else {
 			console.log('cached forecast data loaded');
 			cfData = JSON.parse(cfData);
+			this.parseResponseF(cfData);
 		}
 
-		this.parseResponseF(wDataForecast);
 		//this.parseResponseF(failedLookup);
 
 	}
