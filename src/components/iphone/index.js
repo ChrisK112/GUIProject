@@ -36,7 +36,7 @@ export default class Iphone extends preact.Component {
 		// API URL with a structure of : http://api.wunderground.com/api/key/feature/q/country-code/city.json
 		//for forecast, it would be
 		//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
-		
+
 		let myStorage = window.localStorage;
 		let cwData = myStorage.getItem('wData');
 		let location = this.props.settings.location;
@@ -233,16 +233,24 @@ export default class Iphone extends preact.Component {
 			case "Sunny":
 				imgSrc = "../../assets/icons/sunny";
 				break;
+			case "Scattered Clouds":
 			case "Partly Cloudy":
 			case "Mostly Cloudy":
 				imgSrc = "../../assets/icons/cloudy";
 				break;
-			case "Raining":
+			case "Overcast":
+			case "Light Rain":
+			case "Heavy Rain":
+			case "Freezing Rain":
+			case "Heavy Drizzle":
+			case "Light Drizzle":
+			case "Drizzle":
+			case "Rain":
 				imgSrc = "../../assets/icons/rain";
 				break;
 			//and so on - in stored data its mostly cloudy
 			default:
-				imgSrc = "../../assets/icons/sunny";
+				imgSrc = "../../assets/icons/rain";
 				break;
 		}
 
