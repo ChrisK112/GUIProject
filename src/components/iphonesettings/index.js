@@ -66,14 +66,19 @@ export default class IphoneSettings extends preact.Component {
 
 
 	setUnit = function(event) {
-		let path = '../../assets/girl/';
-		let png = '.png';
-		let fullpath = path + event.target.value + png;
 		this.props.settings.temperature_units = event.target.value;
 	}
 
 	setGirl = function(event) {
 		this.props.settings.girl_model = event.target.value;
+	}
+
+	setBackground = function(event) {
+		this.props.settings.background = event.target.value;
+	}
+
+	setColour = function(event) {
+		this.props.settings.text_colour = event.target.value;
 	}
 
 	setLoc = (e) =>{
@@ -84,18 +89,22 @@ export default class IphoneSettings extends preact.Component {
 
 	// the main render method for the iphone component
 	render() {
+		let backgroundStyle = {
+			backgroundImage: "url(/assets/backgrounds/" + this.props.settings.background + ")",
+			backgroundRepeat  : 'no-repeat'
+		};
 
 		// display all weather data
 		return (
 			<div id="app">
-				<div class={ styleiphone.container }>
+				<div class={ styleiphone.container } style = { backgroundStyle } >
 					<SettingsCog page = { "/" }/>
 					<div class = { style.settings } >
 						<h1>App Setup</h1>
 						{ this.state.currentError && <div class={ style.currentError }>{ this.state.currentError }</div> }
 						<form>
 							<div>
-								<label  for="locationInput">Location:</label>
+								<label  for="locationInput">Location :</label>
 								<div class={ style.locationWrapper }>
 									<input type="text" id="locationInput" value={ this.state.location } onChange={ this.setLoc } />
 									{ "geolocation" in navigator && <a href="#" title="Geolocate" onClick={ this.geoLocate.bind(this) }>
@@ -110,7 +119,7 @@ export default class IphoneSettings extends preact.Component {
 								</div>
 							</div>
 							<div>
-								<label>Temperature unit:</label>
+								<label>Temperature Unit :</label>
 								<div onChange={ this.setUnit.bind(this) }>
 									<label >Celsius <input type = "radio" name ="tUnits" value = "C" defaultChecked={this.props.settings.temperature_units === 'C'} /></label>
 									<label >Fahrenheit <input type = "radio" name ="tUnits" value = "F" defaultChecked={this.props.settings.temperature_units === 'F'} /></label>
@@ -118,12 +127,39 @@ export default class IphoneSettings extends preact.Component {
 							</div>
 
 							<div>
-								<label>Girl style</label>
+								<label>Girl Style :</label>
 								<div onChange = {this.setGirl.bind(this)} >
+<<<<<<< HEAD
 									<label>Summer <input type = "radio" name = "girlModel" value= "hot" defaultChecked={ this.props.settings.girl_model == 'hot' } /></label>
 									<label>Mild <input type = "radio" name = "girlModel" value= "mild" defaultChecked={ this.props.settings.girl_model == 'mild' } /></label>
 									<label>Cold <input type = "radio" name = "girlModel" value= "cold" defaultChecked={ this.props.settings.girl_model == 'cold' } /></label>
 									<label>Rain <input type = "radio" name = "girlModel" value= "rain" defaultChecked={ this.props.settings.girl_model == 'rain' } /></label>
+=======
+									<label>Summer <input type = "radio" name = "girlModel" value= "hot" defaultChecked={this.props.settings.girl_model === 'hot'} /></label>
+									<label>Mild <input type = "radio" name = "girlModel" value= "mild" defaultChecked={this.props.settings.girl_model === 'mild'} /></label>
+									<label>Cold <input type = "radio" name = "girlModel" value= "cold" defaultChecked={this.props.settings.girl_model === 'cold'} /></label>
+									<label>Rain <input type = "radio" name = "girlModel" value= "rain" defaultChecked={this.props.settings.girl_model === 'rain'} /></label>
+								</div>
+							</div>
+
+							<div>
+								<label>Background :</label>
+								<div onChange={ this.setBackground.bind(this) }>
+									<label ><p></p><input type = "radio" name ="background" value = "pexels-photo-1.jpg" defaultChecked={this.props.settings.background === 'pexels-photo-1.jpg'} /><img src="/assets/backgrounds/pexels-photo-1.jpg"></img> </label>
+									<label ><p></p><input type = "radio" name ="background" value = "pexels-photo-2.jpg" defaultChecked={this.props.settings.background === 'pexels-photo-2.jpg'} /><img src="/assets/backgrounds/pexels-photo-2.jpg"></img> </label>
+									<label ><p></p><input type = "radio" name ="background" value = "pexels-photo-3.jpg" defaultChecked={this.props.settings.background === 'pexels-photo-3.jpg'} /><img src="/assets/backgrounds/pexels-photo-3.jpg"></img> </label>
+									<label ><p></p><input type = "radio" name ="background" value = "pexels-photo-4.jpg" defaultChecked={this.props.settings.background === 'pexels-photo-4.jpg'} /><img src="/assets/backgrounds/pexels-photo-4.jpg"></img> </label>
+								</div>
+							</div>
+
+							<div>
+								<label>Text Colour :</label>
+								<div onChange={ this.setColour.bind(this) }>
+									<label><p></p><input type = "radio" name ="textcolour" value = "white" defaultChecked={this.props.settings.text_colour === 'white'} /><img src="/assets/icons/whiteRectangle.png"></img> </label>
+									<label><p></p><input type = "radio" name ="textcolour" value = "black" defaultChecked={this.props.settings.text_colour === 'black'} /><img src="/assets/icons/blackRectangle.png"></img> </label>
+									<label><p></p><input type = "radio" name ="textcolour" value = "red" defaultChecked={this.props.settings.text_colour === 'red'} /><img src="/assets/icons/redRectangle.png"></img> </label>
+									<label><p></p><input type = "radio" name ="textcolour" value = "yellow" defaultChecked={this.props.settings.text_colour === 'yellow'} /><img src="/assets/icons/yellowRectangle.png"></img> </label>
+>>>>>>> x2
 								</div>
 							</div>
 
