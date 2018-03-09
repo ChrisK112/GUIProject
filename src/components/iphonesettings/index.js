@@ -129,12 +129,6 @@ export default class IphoneSettings extends preact.Component {
 							<div>
 								<label>Girl Style :</label>
 								<div onChange = {this.setGirl.bind(this)} >
-<<<<<<< HEAD
-									<label>Summer <input type = "radio" name = "girlModel" value= "hot" defaultChecked={ this.props.settings.girl_model == 'hot' } /></label>
-									<label>Mild <input type = "radio" name = "girlModel" value= "mild" defaultChecked={ this.props.settings.girl_model == 'mild' } /></label>
-									<label>Cold <input type = "radio" name = "girlModel" value= "cold" defaultChecked={ this.props.settings.girl_model == 'cold' } /></label>
-									<label>Rain <input type = "radio" name = "girlModel" value= "rain" defaultChecked={ this.props.settings.girl_model == 'rain' } /></label>
-=======
 									<label>Summer <input type = "radio" name = "girlModel" value= "hot" defaultChecked={this.props.settings.girl_model === 'hot'} /></label>
 									<label>Mild <input type = "radio" name = "girlModel" value= "mild" defaultChecked={this.props.settings.girl_model === 'mild'} /></label>
 									<label>Cold <input type = "radio" name = "girlModel" value= "cold" defaultChecked={this.props.settings.girl_model === 'cold'} /></label>
@@ -159,7 +153,6 @@ export default class IphoneSettings extends preact.Component {
 									<label><p></p><input type = "radio" name ="textcolour" value = "black" defaultChecked={this.props.settings.text_colour === 'black'} /><img src="/assets/icons/blackRectangle.png"></img> </label>
 									<label><p></p><input type = "radio" name ="textcolour" value = "red" defaultChecked={this.props.settings.text_colour === 'red'} /><img src="/assets/icons/redRectangle.png"></img> </label>
 									<label><p></p><input type = "radio" name ="textcolour" value = "yellow" defaultChecked={this.props.settings.text_colour === 'yellow'} /><img src="/assets/icons/yellowRectangle.png"></img> </label>
->>>>>>> x2
 								</div>
 							</div>
 
