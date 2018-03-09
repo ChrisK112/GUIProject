@@ -32,7 +32,11 @@ class Main extends Component {
         '/assets/girl/cold.png',
         '/assets/girl/hot.png',
         '/assets/girl/mild.png',
-        '/assets/girl/rain.png'
+        '/assets/girl/rain.png',
+        '/assets/backgrounds/pexels-photo-1.jpg',
+        '/assets/backgrounds/pexels-photo-2.jpg',
+        '/assets/backgrounds/pexels-photo-3.jpg',
+        '/assets/backgrounds/pexels-photo-4.jpg'
         );
 
 	}
