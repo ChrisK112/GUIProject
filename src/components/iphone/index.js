@@ -46,7 +46,21 @@ export default class Iphone extends preact.Component {
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
 		*/
-		this.parseResponse(weatherData);
+		
+		let myStorage = window.localStorage;
+		let cwData = myStorage.getItem('wData');
+
+		if (!cwData) {
+			// fetch actual data
+			cwData = weatherData;
+			myStorage.setItem('wData', JSON.stringify(cwData));
+		} else {
+			console.log('cached weather data loaded');
+			cwData = JSON.parse(cwData);
+		}
+
+		this.parseResponse(cwData);
+
 		//this.parseResponse(failedLookup);
 
 
@@ -55,6 +69,20 @@ export default class Iphone extends preact.Component {
 	//http://api.wunderground.com/api/Your_Key/forecast/q/UK/London.json
 
 	fetchForecastData = () => {
+
+		let myStorage = window.localStorage;
+		let cfData = myStorage.getItem('fData');
+
+		if (!cfData) {
+			// fetch actual data
+			cfData = wDataForecast;
+			myStorage.setItem('fData', JSON.stringify(cfData));
+
+		} else {
+			console.log('cached forecast data loaded');
+			cfData = JSON.parse(cfData);
+		}
+
 		this.parseResponseF(wDataForecast);
 		//this.parseResponseF(failedLookup);
 
