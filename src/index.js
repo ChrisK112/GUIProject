@@ -4,7 +4,6 @@ import Router from 'preact-router';
 import { h, render, Component } from 'preact';
 
 import Iphone from './components/iphone';
-import Ipad from './components/ipad';
 import IphoneSettings from './components/iphonesettings';
 
 import './style';
