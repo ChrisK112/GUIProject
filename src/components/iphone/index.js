@@ -8,12 +8,13 @@ import style from './style';
 import $ from 'jquery';
 // import the settingscog component
 
-import SettingsCog from '../settingscog';
 
 import weatherData from '../../data/London.json';
 import wDataForecast from '../../data/LondonForecast.json';
 import failedLookup from '../../data/FailedLookup.json';
 
+import SettingsCog from '../settingscog';
+import Girl from '../girl';
 import WeatherBox from "../weatherbox";
 
 export default class Iphone extends preact.Component {
@@ -75,7 +76,7 @@ export default class Iphone extends preact.Component {
 			<div id="app">
 				<div class={ style.container }>
 					<SettingsCog page = { "/iphonesettings" } />
-					<div class={ style.girl_container }></div>
+					<Girl model = { this.props.settings.girl_model } />
 					<div class={ style.container }></div>
 					<div class={ style.blur }></div>
 
@@ -125,7 +126,7 @@ export default class Iphone extends preact.Component {
 	parseResponseF = (parsed_json) => {
 
 		if (parsed_json.response.error) {
-	
+
 			fday1 = fday2 = fday3 = 'Mon';
 			ft1 = ft2 = ft3 = 500;
 			fimg1 = fimg2 = fimg3 = this.determineImage('Error');

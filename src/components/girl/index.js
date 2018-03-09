@@ -1,6 +1,8 @@
 import preact from 'preact';
+import style from './style';
+import { h, render, Component } from 'preact';
 
-class Girl extends preact.component{
+export default class Girl extends preact.Component{
 
 	//constructor with inital set states
 	constructor(props){
@@ -10,7 +12,14 @@ class Girl extends preact.component{
 
 
 	render(){
-
+		let backgroundStyle = {
+			backgroundImage: "url(/assets/girl/" + this.props.model + ".png)",
+			backgroundRepeat  : 'no-repeat'
+		};
+		return (
+			<div class = { style.girl_container } style = { backgroundStyle } ></div>
+		);
 	}
 
 }
+

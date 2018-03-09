@@ -11,18 +11,17 @@ import SettingsCog from '../settingscog';
 import Iphone from '../iphone';
 
 export default class IphoneSettings extends preact.Component {
-//var Iphone = React.createClass({
 
-    // a constructor with initial set states
 	constructor(props){
 		super(props);
 		console.log(props);
-		this.state = {location: this.props.settings.location, currentError: this.props.settings.currentError}
+		this.state = {location: this.props.settings.location, currentError: this.props.settings.currentError};
 		this.props.settings.currentError = null;
 	}
 
+
 	locationChange(event) {
-		this.setState({value})
+		this.setState({value});
 	}
 
 
@@ -54,7 +53,7 @@ export default class IphoneSettings extends preact.Component {
 			}
 
 
-		})
+		});
 	}
 
 	geoLocate = function(e) {
@@ -68,7 +67,14 @@ export default class IphoneSettings extends preact.Component {
 
 
 	setUnit = function(event) {
+		let path = '../../assets/girl/';
+		let png = '.png';
+		let fullpath = path + event.target.value + png;
 		this.props.settings.temperature_units = event.target.value;
+	}
+
+	setGirl = function(event) {
+		this.props.settings.girl_model = event.target.value;
 	}
 
 	setLoc = (e) =>{
@@ -90,7 +96,7 @@ export default class IphoneSettings extends preact.Component {
 						{ this.state.currentError && <div class={ style.currentError }>{ this.state.currentError }</div> }
 						<form>
 							<div>
-								<label class={ styleiphone.htr } for="locationInput">Location:</label>
+								<label  for="locationInput">Location:</label>
 								<div class={ style.locationWrapper }>
 									<input type="text" id="locationInput" value={ this.state.location } onChange={ this.setLoc } />
 									{ "geolocation" in navigator && <a href="#" title="Geolocate" onClick={ this.geoLocate.bind(this) }>
@@ -114,10 +120,11 @@ export default class IphoneSettings extends preact.Component {
 
 							<div>
 								<label>Girl style</label>
-								<div>
-									<label>Summer <input type = "radio" name = "gSummer" value= "Summer" /></label>
-									<label>Mild <input type = "radio" name = "gMild" value= "Mild" /></label>
-									<label>Cold <input type = "radio" name = "gCold" value= "Cold" /></label>
+								<div onChange = {this.setGirl.bind(this)} >
+									<label>Summer <input type = "radio" name = "girlModel" value= "hot" /></label>
+									<label>Mild <input type = "radio" name = "girlModel" value= "mild" /></label>
+									<label>Cold <input type = "radio" name = "girlModel" value= "cold" /></label>
+									<label>Rain <input type = "radio" name = "girlModel" value= "rain" /></label>
 								</div>
 							</div>
 
