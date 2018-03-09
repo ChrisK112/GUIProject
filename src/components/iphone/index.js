@@ -68,17 +68,18 @@ export default class Iphone extends preact.Component {
 		this.fetchForecastData;
 
 		console.log(this.state);
-
-		// check if temperature data is fetched, if so add the sign styling to the page
-		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
+		let backgroundStyle = {
+			backgroundImage: "url(/assets/backgrounds/" + this.props.settings.background + ")",
+			backgroundRepeat  : 'no-repeat'
+		};
 		// display all weather data
 		return (
 			<div id="app">
 				<div class={ style.container }>
 					<SettingsCog page = { "/iphonesettings" } />
 					<Girl model = { this.props.settings.girl_model } />
-					<div class={ style.container }></div>
-					<div class={ style.blur }></div>
+					<div class={ style.container } style = { backgroundStyle } ></div>
+					<div class={ style.blur } style = { backgroundStyle } ></div>
 
 					<WeatherBox settings={ this.props.settings } temp={this.state.temp} cond={this.state.cond} f1={this.state.fd1} f2={this.state.fd2} f3={this.state.fd3} />
 				</div>

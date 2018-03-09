@@ -22,7 +22,9 @@ class Main extends Component {
 			temperature_units: 'C',
 			geocode: null,
 			currentError: null,
-			girl_model : 'rain'
+			girl_model : 'rain',
+			background : 'pexels-photo-1.jpg',
+			text_colour : 'white'
 		};
 
 	}

@@ -3,7 +3,7 @@
 
 .settings {
   position: absolute;
-  padding: 20%;
+  padding: 15%;
   color: #fff;
   font-family: munro;
   text-shadow: 2px 2px 0px #000;
@@ -21,7 +21,7 @@
     font-family: munro;
     font-size: 1.2em;
     color: #fff;
-    background-color: #333;    
+    background-color: #333;
     border: 2px solid #fff;
     margin-top: 0.2em;
     text-shadow: 2px 2px 0px #000;
@@ -76,4 +76,24 @@
   margin-bottom: 1em;
   padding: 0.5em 1em;
   display: inline-block;
+}
+//using p as a work-around, as cannot select PREVIOUS child - select every input that is after p
+label > p + input {
+  visibility: hidden; //hide radio button
+  position: absolute;
+}
+//select every img that is after input
+label > input + img{
+  height : 50px;
+  width : 50px;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+//select every img that is after checked input
+label > input:checked + img{
+  border:2px solid #fff;
+}
+//hiding p elements
+p {
+  margin : 0px;
 }

@@ -15,9 +15,11 @@ export default class WeatherBox extends preact.Component {
 
     // rendering a function when the button is clicked
 	render() {
-
+		let textColour = {
+			color: this.props.settings.text_colour
+		}
 		return (
-			<div class={ style.weatherBox }>
+			<div class={ style.weatherBox } style = { textColour } >
 				<div>
 					<div class = {style.futureDay}>{ this.props.f1.fday1 } <img id = { style.boximg } src= { this.props.f1.fimg1 } ></img>  { this.props.f1.ft1 }&#176;{ this.getUnit() } </div>
 					<div class = {style.futureDay}>{ this.props.f2.fday2 }  <img id = { style.boximg } src= {this.props.f2.fimg2 } ></img>  { this.props.f2.ft2 }&#176;{ this.getUnit() } </div>
