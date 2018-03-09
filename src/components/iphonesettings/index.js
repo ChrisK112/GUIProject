@@ -14,7 +14,11 @@ export default class IphoneSettings extends preact.Component {
 
 	constructor(props){
 		super(props);
-		this.state = {location: this.props.settings.location, currentError: this.props.settings.currentError};
+		this.state = {
+			location: this.props.settings.location,
+			currentError: this.props.settings.currentError,
+			background: this.props.settings.background,
+		};
 		this.props.settings.currentError = null;
 	}
 
@@ -74,6 +78,7 @@ export default class IphoneSettings extends preact.Component {
 	}
 
 	setBackground = function(event) {
+		this.setState({ background: event.target.value });
 		this.props.settings.background = event.target.value;
 	}
 
@@ -90,7 +95,7 @@ export default class IphoneSettings extends preact.Component {
 	// the main render method for the iphone component
 	render() {
 		let backgroundStyle = {
-			backgroundImage: "url(/assets/backgrounds/" + this.props.settings.background + ")",
+			backgroundImage: "url(/assets/backgrounds/" + this.state.background + ")",
 			backgroundRepeat  : 'no-repeat'
 		};
 
