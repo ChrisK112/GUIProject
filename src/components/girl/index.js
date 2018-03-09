@@ -7,11 +7,11 @@ export default class Girl extends preact.Component{
 	//constructor with inital set states
 	constructor(props){
 		super(props);
-		console.log(props);
 	}
 
 
 	render(){
+
 		let backgroundStyle = {
 			backgroundImage: "url(/assets/girl/" + this.props.model + ".png)",
 			backgroundRepeat  : 'no-repeat'

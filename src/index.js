@@ -25,8 +25,24 @@ class Main extends Component {
 			girl_model : 'rain'
 		};
 
+        // preload
+        this.preload(
+        '/assets/girl/cold.png',
+        '/assets/girl/hot.png',
+        '/assets/girl/mild.png',
+        '/assets/girl/rain.png'
+        );
+
 	}
 
+    preload = function() {
+        let images = [];
+        for (var i = 0; i < arguments.length; i++ ) {
+            images[i] = new Image();
+            images[i].src = arguments[i];
+            console.log('preloading ' + arguments[i]);
+        }
+    }
 
 	render() {
 		return (

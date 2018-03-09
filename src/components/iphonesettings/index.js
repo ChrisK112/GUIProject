@@ -14,7 +14,6 @@ export default class IphoneSettings extends preact.Component {
 
 	constructor(props){
 		super(props);
-		console.log(props);
 		this.state = {location: this.props.settings.location, currentError: this.props.settings.currentError};
 		this.props.settings.currentError = null;
 	}
@@ -121,10 +120,10 @@ export default class IphoneSettings extends preact.Component {
 							<div>
 								<label>Girl style</label>
 								<div onChange = {this.setGirl.bind(this)} >
-									<label>Summer <input type = "radio" name = "girlModel" value= "hot" /></label>
-									<label>Mild <input type = "radio" name = "girlModel" value= "mild" /></label>
-									<label>Cold <input type = "radio" name = "girlModel" value= "cold" /></label>
-									<label>Rain <input type = "radio" name = "girlModel" value= "rain" /></label>
+									<label>Summer <input type = "radio" name = "girlModel" value= "hot" defaultChecked={ this.props.settings.girl_model == 'hot' } /></label>
+									<label>Mild <input type = "radio" name = "girlModel" value= "mild" defaultChecked={ this.props.settings.girl_model == 'mild' } /></label>
+									<label>Cold <input type = "radio" name = "girlModel" value= "cold" defaultChecked={ this.props.settings.girl_model == 'cold' } /></label>
+									<label>Rain <input type = "radio" name = "girlModel" value= "rain" defaultChecked={ this.props.settings.girl_model == 'rain' } /></label>
 								</div>
 							</div>
 

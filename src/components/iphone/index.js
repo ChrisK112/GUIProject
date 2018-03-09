@@ -67,8 +67,6 @@ export default class Iphone extends preact.Component {
 		this.fetchWeatherData;
 		this.fetchForecastData;
 
-		console.log(this.state);
-
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
 		// display all weather data
