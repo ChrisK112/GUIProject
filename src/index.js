@@ -4,7 +4,7 @@ import Router from 'preact-router';
 import { h, render, Component } from 'preact';
 
 import Iphone from './components/iphone';
-import IphoneSettings from './components/iphonesettings';
+import Settings from './components/settings';
 
 import './style';
 
@@ -69,7 +69,7 @@ class Main extends Component {
 		return (
             <Router>
                 <Iphone path="/" settings={ this.state.settings } />
-                <IphoneSettings path="/iphonesettings" settings={ this.state.settings } />
+                <Settings path="/settings" settings={ this.state.settings } />
             </Router>
 		);
 	}

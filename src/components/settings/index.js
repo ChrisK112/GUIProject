@@ -10,7 +10,7 @@ import $ from 'jquery';
 import SettingsCog from '../settingscog';
 import Iphone from '../iphone';
 
-export default class IphoneSettings extends preact.Component {
+export default class Settings extends preact.Component {
 
 	constructor(props){
 		super(props);

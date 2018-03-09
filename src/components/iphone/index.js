@@ -123,7 +123,7 @@ export default class Iphone extends preact.Component {
 		return (
 			<div id="app">
 				<div class={ style.container }>
-					<SettingsCog page = { "/iphonesettings" } />
+					<SettingsCog page = { "/settings" } />
 					<Girl model = { this.props.settings.girl_model } />
 					<div class={ style.container } style = { backgroundStyle } ></div>
 					<div class={ style.blur } style = { backgroundStyle } ></div>
@@ -256,7 +256,7 @@ export default class Iphone extends preact.Component {
 	locationError = (error) => {
 
 		this.props.settings.currentError = 'Please check your location: ' + error;
-		Router.route('/iphonesettings', true);
+		Router.route('/settings', true);
 
 	}
 
