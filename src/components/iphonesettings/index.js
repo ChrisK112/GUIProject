@@ -27,6 +27,11 @@ export default class IphoneSettings extends preact.Component {
 		this.setState({value});
 	}
 
+	saveSettings() {
+		let myStorage = window.localStorage;
+		myStorage.setItem('appSettings', JSON.stringify(this.props.settings));
+	}
+
 
 	reverseGeocode = function(lat, lon) {
 
@@ -44,6 +49,7 @@ export default class IphoneSettings extends preact.Component {
 					if (json.result.length) {
 						that.setState({location: json.result[0].postcode});
 						that.props.settings.location = json.result[0].postcode;
+						this.saveSettings();
 						console.log('set location to postcode ' + json.result[0].postcode);
 					}
 
@@ -71,24 +77,29 @@ export default class IphoneSettings extends preact.Component {
 
 	setUnit = function(event) {
 		this.props.settings.temperature_units = event.target.value;
+		this.saveSettings();
 	}
 
 	setGirl = function(event) {
 		this.props.settings.girl_model = event.target.value;
+		this.saveSettings();
 	}
 
 	setBackground = function(event) {
 		this.setState({ background: event.target.value });
 		this.props.settings.background = event.target.value;
+		this.saveSettings();
 	}
 
 	setColour = function(event) {
 		this.props.settings.text_colour = event.target.value;
+		this.saveSettings();
 	}
 
 	setLoc = (e) =>{
-	  this.setState({location: e.target.value});
+		this.setState({location: e.target.value});
 		this.props.settings.location = e.target.value;
+		this.saveSettings();
 	}
 
 

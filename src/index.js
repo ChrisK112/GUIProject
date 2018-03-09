@@ -17,15 +17,32 @@ class Main extends Component {
 
 		super(props);
 
-		this.state.settings = {
-			location: 'London',
-			temperature_units: 'C',
-			geocode: null,
-			currentError: null,
-			girl_model : 'rain',
-			background : 'pexels-photo-1.jpg',
-			text_colour : 'white'
-		};
+        let myStorage = window.localStorage;
+        let appSettings = myStorage.getItem('appSettings');
+
+        if (!appSettings) {
+            // fetch actual data
+            appSettings = {
+                location: 'London',
+                temperature_units: 'C',
+                geocode: null,
+                currentError: null,
+                girl_model : 'rain',
+                background : 'pexels-photo-1.jpg',
+                text_colour : 'white'
+            };
+
+            myStorage.setItem('appSettings', JSON.stringify(appSettings));
+            console.log('settings saved to local storage');
+
+        } else {
+            console.log('cached settings loaded');
+            appSettings = JSON.parse(appSettings);
+        }
+
+        console.log(appSettings);
+
+		this.state.settings = appSettings;
 
         // preload
         this.preload(
@@ -46,7 +63,6 @@ class Main extends Component {
         for (var i = 0; i < arguments.length; i++ ) {
             images[i] = new Image();
             images[i].src = arguments[i];
-            console.log('preloading ' + arguments[i]);
         }
     }
 
